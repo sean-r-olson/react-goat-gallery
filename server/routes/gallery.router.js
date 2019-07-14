@@ -21,4 +21,9 @@ router.get('/', (req, res) => {
     res.send(galleryItems);
 }); // END GET Route
 
+router.get('/description', (req, res) => {
+        console.log( 'in /description GET:');
+    res.send(galleryItems)
+})
+
 module.exports = router;

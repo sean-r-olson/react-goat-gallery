@@ -6,11 +6,50 @@ class App extends Component {
   
   state = {
     goatList: [],
-  }
+    clickedID: false,
+    clickedDescription: '',
+    }
+  
 
   componentDidMount() {
     this.getGoats();
   }
+
+//   renderPicDescription = () => {
+//     console.log('in renderPicDescription');
+//     axios.get('/gallery/description')
+//     .then(response => {
+//       this.setState({
+//         clickedID: response.data.id,
+//       })
+//     }).catch((error) => {
+//       console.log('error getting goat ID', error);
+//     })
+// }
+
+  // renderPicDescription = (item) => {
+  //   this.getGoats();
+  //   {this.state.goatList.map((item) =>
+  //     this.setState({
+  //       clickedDescription: item.description,
+  //     })
+  //     )}
+  // }
+
+  renderPicDescription = (item) => {
+    if(this.state.clickedID === false) {
+    this.setState({
+      clickedID: true,
+      clickedDescription: item,
+    }) 
+  } else {
+    this.setState({
+      clickedID: false,
+      clickedDescription: '',
+    })
+    }
+    this.getGoats();
+}
 
   getGoats = () => {
     console.log('in getGoats');
@@ -45,9 +84,10 @@ class App extends Component {
         <br/>
         <p>Gallery of Goats.</p>
         <ul>{this.state.goatList.map((item) =>
-            <li  key={item.id}>  <img src={item.path} alt={item.description}/>
+            <li  key={item.id}>  <img onClick = {() => {this.renderPicDescription(item.description)}} src={item.path} alt={item.description}/>
+            {this.state.description}
             <br/>
-            {item.likes}
+            Likes: {item.likes} 
                   <button className="button" key={item.id} onClick = {() => {this.handleLike(item)}}>Like</button>
             </li>
                   )}
