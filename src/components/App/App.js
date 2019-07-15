@@ -6,15 +6,17 @@ import GalleryList from '../GalleryList/GalleryList'
 
 class App extends Component {
   
+  // state, which will be manipulated to reflect our data being pulled from /gallery
   state = {
     goatList: [],
     }
   
-
+  // our 'onReady' function, calling our GET 
   componentDidMount() {
     this.getGoats();
   }
 
+  // make axios call to /gallery to get data, which we'll set as our new goat array (of objects)
   getGoats = () => {
     console.log('in getGoats');
     axios.get('/gallery')
@@ -27,8 +29,7 @@ class App extends Component {
     })
   }
 
-  
-
+  // call render to display, or render, our content to the DOM
   render() {
     console.log(this.state)
     return (

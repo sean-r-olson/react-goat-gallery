@@ -3,7 +3,7 @@ import GalleryItem from '../GalleryItem/GalleryItem';
 
 class GalleryList extends Component {
 
-
+    // the goatList array will be looped through, using GalleryItem component to render the correct content to DOM
     render () {
         return (
             <>
