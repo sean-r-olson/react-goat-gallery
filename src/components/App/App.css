@@ -25,25 +25,44 @@
 
 
 ul {
+  display: inline-block;
   list-style-type: none;
-  margin: 0;
-  padding: 0;
+  margin: 10px;
+  padding: 10px;
   text-align: center;
+  border: black;
 
 }
 
 ul li {
-  display: inline-block;
-  margin: 20px 20px;
+  margin: auto;
   text-align: left;
   min-width: 300px;
-}
-
-.button {
-  display: flex;
-  justify-content: center;
-}
-
-img {
+  width: 300px;
+  height: 300px;  
   border: solid black;
 }
+
+button {
+  margin: 5px 0px 0px 0px; 
+  border: none;
+  width: auto;
+  height: auto;
+}
+
+button:hover {
+  cursor: pointer;
+} 
+
+button:focus {
+  outline: none;
+}
+
+.likes {
+  margin: 5px 0px 0px 0px;
+  border: none;
+  width: auto;
+  height: auto;
+  text-align: center;
+}
+

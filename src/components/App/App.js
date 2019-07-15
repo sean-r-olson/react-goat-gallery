@@ -1,55 +1,18 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
+import GalleryList from '../GalleryList/GalleryList'
 
 class App extends Component {
   
   state = {
     goatList: [],
-    clickedID: false,
-    clickedDescription: '',
     }
   
 
   componentDidMount() {
     this.getGoats();
   }
-
-//   renderPicDescription = () => {
-//     console.log('in renderPicDescription');
-//     axios.get('/gallery/description')
-//     .then(response => {
-//       this.setState({
-//         clickedID: response.data.id,
-//       })
-//     }).catch((error) => {
-//       console.log('error getting goat ID', error);
-//     })
-// }
-
-  // renderPicDescription = (item) => {
-  //   this.getGoats();
-  //   {this.state.goatList.map((item) =>
-  //     this.setState({
-  //       clickedDescription: item.description,
-  //     })
-  //     )}
-  // }
-
-  renderPicDescription = (item) => {
-    if(this.state.clickedID === false) {
-    this.setState({
-      clickedID: true,
-      clickedDescription: item,
-    }) 
-  } else {
-    this.setState({
-      clickedID: false,
-      clickedDescription: '',
-    })
-    }
-    this.getGoats();
-}
 
   getGoats = () => {
     console.log('in getGoats');
@@ -63,16 +26,7 @@ class App extends Component {
     })
   }
 
-  handleLike = (item) => {
-    let count = item.likes;
-    axios.put(`/gallery/like/${item.id}`,{likes: count})
-    .then((response) => {
-      console.log(response);
-      this.getGoats();
-    }).catch((error) => {
-      console.log('error updating likes');
-    })
-  }
+  
 
   render() {
     console.log(this.state)
@@ -83,15 +37,7 @@ class App extends Component {
         </header>
         <br/>
         <p>Gallery of Goats.</p>
-        <ul>{this.state.goatList.map((item) =>
-            <li  key={item.id}>  <img onClick = {() => {this.renderPicDescription(item.description)}} src={item.path} alt={item.description}/>
-            {this.state.description}
-            <br/>
-            Likes: {item.likes} 
-                  <button className="button" key={item.id} onClick = {() => {this.handleLike(item)}}>Like</button>
-            </li>
-                  )}
-        </ul>
+       <GalleryList goatList = {this.state.goatList} getGoats = {this.getGoats}/>
       </div>
     );
   }
