@@ -53,7 +53,7 @@ class GalleryItem extends Component {
         <>
         <ul>
             <li className = "description" onClick={this.renderPicDescription}>{this.props.item.description}</li>
-            <button className="button" key={this.props.item.id} onClick = {() => {this.handleLike(this.props.item)}}>LIKE </button>
+            <button className="button" key={this.props.item.id} onClick = {() => {this.handleLike(this.props.item)}}><img src='/images/thumbsup.png'/></button>
             <li className = "likes">Likes: {this.props.item.likes}</li>
         </ul>
         

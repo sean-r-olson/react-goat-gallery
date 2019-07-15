@@ -1,6 +1,5 @@
 .App {
   text-align: center;
-  margin: 20px;
 }
 
 .App-header {
@@ -8,6 +7,10 @@
   height: 70px;
   padding: 20px;
   color: white;
+  width: 100%;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
 }
 
 .App-title {
@@ -66,3 +69,7 @@ button:focus {
   text-align: center;
 }
 
+.description {
+  background-color: black;
+  color: white;
+}
